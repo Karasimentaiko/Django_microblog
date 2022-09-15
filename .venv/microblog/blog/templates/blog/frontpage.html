@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frontpage</title>
+    <link rel="stylesheet" href="./assets/css/sanitize.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+
+<body>
+    <section class="content_1">
+        <div class="p-3 mb-2 bg-secondary text-white">
+            <h1>Hello Django</h1>
+        </div>
+    </section>
+
+    <section class="login_singin">
+        <a href="login" class="login">ログイン</a>
+        <a href="singin" class="singin">サインイン</a>
+    </section>
+
+    <section class="content_2">
+        {% for post in posts %}
+        <div class="PostBlock">
+            <h2 class="subtitle">{{post.title}}</h2>
+            <small>Posted at {{post.posted_date}}</small>
+            <p>{{post.intro}}</p>
+            <a href="{% url 'post_detail' post.slug %}">詳細</a>
+            <hr>
+
+        </div>
+        {% endfor %}
+    </section>
+
+</body>
+
+</html>
